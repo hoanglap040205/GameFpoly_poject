@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -26,6 +27,12 @@ public class AccountUiManager : MonoBehaviour
     //Tu dong dang nhap khi startGame
     private string autoLoginUserName;
     private string autoLoginPassword;
+
+    private void Awake()
+    {
+        if(currentPlayer.text != null)currentPlayer.text = playerLogin;
+    }
+
     private void Start()
     {
         isOpened = true;
@@ -41,7 +48,7 @@ public class AccountUiManager : MonoBehaviour
         autoLoginUserName = PlayerPrefs.GetString("UserName");
         autoLoginPassword = PlayerPrefs.GetString("Password");
         CheckLastPlayerLogin(autoLoginUserName, autoLoginPassword);
-        currentPlayer.text = playerLogin;
+        
         
     }
 
